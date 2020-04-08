@@ -1,4 +1,6 @@
 .wrapper {
-  text-align: center;
-  padding: 20px;
+  padding: 5px;
+  max-width: 500px;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,25 +1,15 @@
 import React, {Component} from "react";
 import Slider from './Slider';
-import SliderAlt from './SliderAlt';
-import InfoGetter from "./InfoGetter";
+import InfoGetterAlt from "./InfoGetterAlt";
+import '../App.css';
 
 class Content extends Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {};
-    }
-
-    handleChange(e) {
-
-    }
 
     render() {
         return (
             <>
                 <Slider/>
-                <SliderAlt/>
-                <InfoGetter/>
+                <InfoGetterAlt/>
             </>
         )
     }
