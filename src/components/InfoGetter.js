@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {withStyles} from '@material-ui/core/styles';
+
+const useStyles = (theme) => ({});
 
 class InfoGetter extends Component {
     constructor(props) {
@@ -7,62 +10,95 @@ class InfoGetter extends Component {
             name: null,
             year: null,
             playtime: null,
-            category: null,
+            description: null,
+            categories: [],
             publisher: null,
+            img: null,
+            id: 66356,
+            xml: null,
         };
     }
 
     componentDidMount() {
-        let req = new XMLHttpRequest();
-        req.open("get", "http://localhost:3001/https://www.boardgamegeek.com/xmlapi2/thing?id=013", false);
-        req.send();
-        console.log(req.responseText);
-
-        let parser, xmlDoc;
-        let text = req.responseText;
-
-        parser = new DOMParser();
-        xmlDoc = parser.parseFromString(text, "text/xml");
-
-        this.setState({
-            name: xmlDoc.getElementsByTagName("name")[0].getAttribute('value'),
-            year: xmlDoc.getElementsByTagName("yearpublished")[0].getAttribute('value'),
-            playtime: xmlDoc.getElementsByTagName("playingtime")[0].getAttribute('value'),
-            category: xmlDoc.getElementsByTagName("boardgamecategory")[0].getAttribute('value'),
-            publisher: xmlDoc.getElementsByTagName("boardgamepublisher")[0].getAttribute('value'),
-        })
+        this.doFetch();
     }
 
-    /*
-        let url = "http://localhost:8080/https://www.boardgamegeek.com/xmlapi2/boardgame/thing?id=";
-        let id = "013";
+    doFetch() {
+        const url = 'http://localhost:3001/https://www.boardgamegeek.com/xmlapi2/thing?id=';
+        let self = this;
 
-        let req = new XMLHttpRequest();
-        req.open("GET", "http://localhost:3001/https://www.boardgamegeek.com/xmlapi2/thing?id=013", false);
-        req.send(null);
-        console.log(req.responseText);
+        fetch(url + this.state.id, {method: 'GET'})
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (data) {
+                let parser = new DOMParser();
+                let xml = parser.parseFromString(data, "text/xml");
+                self.setState({
+                    xml: xml
+                });
+                self.setValues(self.state.xml);
+            })
+    }
 
-        fetch(url + '266192', {method: 'get'}) //esimerkkinä Wingspan
-            .then(response => response.text())
-            .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-            .then(data => this.state.data);
-        console.log(this.state.data);
-        console.log("potato");
+    setValues(xml) {
+        let descriptionText = xml.getElementsByTagName("description")[0].childNodes[0].nodeValue;
+        descriptionText = descriptionText.replace(/&#10;/g, " ");
+        descriptionText = descriptionText.replace(/&nbsp;/g, " ");
+        descriptionText = descriptionText.replace(/&mdash;/g, " ");
 
-        let XMLParser = require('react-xml-parser');
-        let xml = new XMLParser().parseFromString(this.state.data);
-        console.log(xml);
-        console.log(xml.getElementsByTagName('Name'));
-     */
+        let unsorted = xml.getElementsByTagName("link");
+        let categoriesArray = [], publisher, publisherSet = false;
+        let self = this;
+
+        for (let i = 0; i < unsorted.length; i++) {
+            if (unsorted[i].getAttribute('type') === "boardgamecategory") {
+                categoriesArray.push(unsorted[i].getAttribute('value'));
+            } else if (unsorted[i].getAttribute('type') === "boardgamepublisher" && publisherSet === false) {
+                publisher = unsorted[i].getAttribute('value');
+                publisherSet = true;
+            }
+        }
+
+        let categories = "| ";
+
+        for (let i = 0; i < categoriesArray.length; i++) {
+            categories += categoriesArray[i] + " | ";
+        }
+
+        self.setState({
+            name: xml.getElementsByTagName("name")[0].getAttribute('value'),
+            publisher: publisher,
+            categories: categories,
+            year: xml.getElementsByTagName("yearpublished")[0].getAttribute('value'),
+            playtime: xml.getElementsByTagName("playingtime")[0].getAttribute('value'),
+            description: descriptionText,
+            img: xml.getElementsByTagName("thumbnail")[0].childNodes[0].nodeValue,
+        });
+    }
 
     render() {
         return (
-            <div>
-                Infogetter on täällä!
-                {this.state.name}
+            <div align={"left"} style={{paddingLeft: 20, paddingRight: 20, paddingBottom: 20}}>
+                <p>
+                    <b>Name:</b> {this.state.name}
+                    <br/>
+                    <b>Image:</b> <img src={this.state.img} alt={"Kuva pelistä."}/>
+                    <br/>
+                    <b>Publisher:</b> {this.state.publisher}
+                    <br/>
+                    <b>Year of publishing:</b> {this.state.year}
+                    <br/>
+                    <b>Categories:</b> {this.state.categories}
+                    <br/>
+                    <b>Avg. playtime:</b> {this.state.playtime} minutes
+                    <br/>
+                    <b>Description:</b> {this.state.description}
+                </p>
             </div>
-        )
+
+        );
     }
 }
 
-export default InfoGetter;
+export default withStyles(useStyles)(InfoGetter);

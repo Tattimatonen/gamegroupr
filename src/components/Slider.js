@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import {withStyles} from '@material-ui/core/styles';
 import tileData from './data/tileData';
+import InfoGetter from "./InfoGetter";
 
 const useStyles = (theme) => ({
     root: {
@@ -26,37 +27,51 @@ const useStyles = (theme) => ({
 });
 
 class Slider extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentId: 66356,
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(tileId) {
+        this.setState({
+                currentId: tileId
+            }, () => console.log("Current ID: " + this.state.currentId)
+        )
+    };
 
     render() {
         const {classes} = this.props;
 
         return (
-            <div className={classes.root}>
-                <GridList className={classes.gridList} cols={2.5}>
-                    {tileData.map((tile) => (
-                        <GridListTile key={tile.img}>
-                            <img src={tile.img} alt={tile.title}/>
-                            <GridListTileBar
-                                title={tile.title}
-                                subtitle={tile.author}
-                                classes={{
-                                    root: classes.titleBar,
-                                    title: classes.title,
-                                }}
-                                actionIcon={
-                                    <IconButton color="secondary">
-                                        <InfoIcon/>
-                                    </IconButton>
-                                }
-                            />
-                        </GridListTile>
-                    ))}
-                </GridList>
-            </div>
+            <>
+                <div className={classes.root}>
+                    <GridList className={classes.gridList} cols={2.5}>
+                        {tileData.map((tile) => (
+                            <GridListTile key={tile.id}>
+                                <img src={tile.img} alt={tile.title}/>
+                                <GridListTileBar
+                                    title={tile.title}
+                                    subtitle={tile.author}
+                                    classes={{
+                                        root: classes.titleBar,
+                                        title: classes.title,
+                                    }}
+                                    actionIcon={
+                                        <IconButton onClick={() => this.handleClick(tile.id)} color="secondary">
+                                            <InfoIcon/>
+                                        </IconButton>
+                                    }
+                                />
+                            </GridListTile>
+                        ))}
+                    </GridList>
+                </div>
+            </>
         );
     }
-
-
 }
 
 export default withStyles(useStyles)(Slider);

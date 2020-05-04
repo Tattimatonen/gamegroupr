@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86cc8692-1eac-4cc5-afb0-7f32c0ee2ae5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/InfoGetterAlt.js" afterDir="false" />
+    <list default="true" id="86cc8692-1eac-4cc5-afb0-7f32c0ee2ae5" name="Default Changelist" comment="Ai niin vois committaakin">
+      <change afterPath="$PROJECT_DIR$/src/components/Menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/InfoGetter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoGetter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InfoGetterAlt.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SliderAlt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/data/tileData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/data/tileData.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586255762245</updated>
-      <workItem from="1586255764746" duration="39076000" />
+      <workItem from="1586255764746" duration="52628000" />
     </task>
     <task id="LOCAL−00001" summary="Ai niin vois committaakin">
       <created>1586359725653</created>
@@ -101,7 +99,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1586359725653</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Ai niin vois committaakin">
+      <created>1586389356641</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1586389356641</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,10 +121,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1586354432123" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586359724506">
+    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1588624864191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1586359724506" />
+    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1588624864191" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1586374930222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -145,10 +149,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1586359950831" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1586378409549">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1586389412759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1586378409549" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1586389412759" />
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1588624774363">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1680.23.1680.1010@0.0.1920.1040" timestamp="1588624774363" />
     <state x="761" y="311" key="git4idea.merge.GitPullDialog" timestamp="1586359788957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

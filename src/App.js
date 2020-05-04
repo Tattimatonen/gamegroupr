@@ -2,14 +2,25 @@ import React, {Component} from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
-import Content from "./components/Content";
+import SliderContainer from "./components/SliderContainer";
+import Menu from "./components/Menu";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuState: 0,
+        };
+    }
+
     render() {
         return (
             <div className={"wrapper"}>
                 <Header/>
-                <Content/>
+                <Menu menuState={this.state.menuState}/>
+                <>
+                    <SliderContainer/>
+                </>
                 <Footer/>
             </div>
         );
